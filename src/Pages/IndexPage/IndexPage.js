@@ -1,8 +1,8 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './IndexPage.css';
 /**
- * This function is used to show Different functionalities of realtime traffic
+ * This is the helper function which is used to show Different functionalities of realtime traffic
  * @returns Functionalities
  */
 function IndexPage() {
@@ -18,7 +18,7 @@ function IndexPage() {
             <table className="table_librarian">
               <tr>
                 <th>
-                  <button className="button_student">About Traffic Details</button>
+                  <button className="button_student"><Link to="/trafficspeeddetailspage">About Traffic Details</Link></button>
                 </th>
                 <th>
                   <button className="button_books">Check Traffic locations</button>

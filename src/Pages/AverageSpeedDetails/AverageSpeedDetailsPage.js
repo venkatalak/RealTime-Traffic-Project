@@ -2,11 +2,12 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
+import {Link} from 'react-router-dom';
 
- /**
-  * This is helper Function which is used to show the Speed details
-  * @returns 
-  */
+/**
+ * This is helper Function which is used to show the Speed details of endpoints
+ * @returns 
+ */
 
 function AverageSpeedDetailsPage() {
   const [Data, SetData] = useState([])
@@ -19,6 +20,11 @@ function AverageSpeedDetailsPage() {
     }
   };
   const columns = [
+    {
+      name: "ID",
+      selector: (row) => row.id,
+      sortable:true
+    },
     {
       name: "End Points",
       selector: (row) => row.link_points,
@@ -40,7 +46,8 @@ function AverageSpeedDetailsPage() {
         data={Data}
         pagination
         fixedHeader
-        fixedHeaderScrollHeight />
+        fixedHeaderScrollHeight 
+        actions={<Link to="/"></Link>}/>  
 
     </>
   )

@@ -3,58 +3,87 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
 
-/**
- * This is the helper function which is used to show details traffic speed data
- * @returns Table with traffic speed data
- */
 
 function TrafficSpeedDetailsPage() {
-  const [Data, SetData] = useState([])
-  const getData = async () => {
-    try {
-      const response = await axios.get("https://data.cityofnewyork.us/resource/i4gi-tjb9.json");
-      SetData(response.data);
-    } catch (error) {
+  const [data,setData]=useState([])
+  const [search,setSearch]=useState("")
+  const [filterdata,setFilterdata]=useState([])
+  const getData = async () =>{
+    try{
+      const response =await axios.get("https://data.cityofnewyork.us/resource/i4gi-tjb9.json");
+      setData(response.data);
+      setFilterdata(response.data)
+    }catch(error){
       console.log(error);
-    }
+    } 
   };
-  const columns = [
+  const columns=[
     {
-      name: "ID",
-      selector: (row) => row.id,
+      name:"ID",
+      selector:(row)=>row.id,
+      // sortable:true
     },
     {
-      name: "Speed",
-      selector: (row) => row.speed,
+      name:"Speed",
+      selector:(row)=>row.speed,
+      // sortable:true
     },
     {
-      name: "Travel_Time",
-      selector: (row) => row.travel_time,
+      name:"Date",
+      selector:(row)=>row.data_as_of,
+      // sortable:true
     },
     {
-      name: "Date",
-      selector: (row) => row.data_as_of,
+      name:"Travel Time",
+      selector:(row)=>row.travel_time,
     },
     {
-      name: "Borough",
-      selector: (row) => row.borough,
+      name:"Borough or city",
+      selector:(row)=>row.borough,
     }
   ]
 
-  useEffect(() => {
+  useEffect(()=>{
     getData();
-  }, [])
-  return (
-    <>
-      {/* {console.log(columns)} */}
-      <DataTable title="About Traffic Speed Details"
-        columns={columns}
-        data={Data}
-        pagination
-        fixedHeader
-        fixedHeaderScrollHeight />
+  },[])
+
+
+  // to filter search data whenever search changes useeffect hook will be effected
+ useEffect(()=>{
+  const result=data.filter(rowdata=>{
+    return rowdata.borough.toLowerCase().match(search.toLowerCase());
+   
+  });
+  setFilterdata(result)
+ },[search])
+
+  return(
+    <> 
+    {console.log("any data",data)}
+    <DataTable title="Real Time Traffic Speed data"
+     columns={columns} 
+     data={filterdata} 
+     pagination
+     fixedHeader
+     fixedHeaderScrollHeight='550px'
+     selectableRows
+     selectableRowsHighlight
+     highlightOnHover
+     actions={<></>
+ }
+    subHeader
+    subHeaderComponent={
+      <input type="text" placeholder="search here" className="input-search"
+      value={search}
+      onChange={(e)=>setSearch(e.target.value)}
+      />
+    }
+    subHeaderAlign="right"
+      />
 
     </>
+
   )
 }
+
 export default TrafficSpeedDetailsPage;
