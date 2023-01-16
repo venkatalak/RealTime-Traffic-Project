@@ -1,0 +1,14 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  height: 20vh;
+}
+.dropdown-container {
+  width: 300px;
+}
+.btn{
+  color:black;
+  background-color: aqua;
+}

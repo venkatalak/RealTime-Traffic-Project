@@ -1,0 +1,45 @@
+/* .table_get table,
+.table_get thead,
+.table_get tbody,
+.table_get th, */
+.getdata{
+  padding-top:90px ;
+
+}
+.table_get td {
+  border: 1px black solid;
+  padding-bottom: 10px;
+  /* border between each cell each cell has its seperate border */
+}
+
+.table_get  {
+  border-spacing: 10px 10px;
+  width: 100%;
+  border-collapse: collapse;
+  background-color:aqua;
+  /* padding-left:500px; */
+  /* two cells share common border */
+}
+
+.table_get th,
+.table_get td {
+  height: 3px;
+  padding: 10px;
+  /* border-bottom: 1px solid black; */
+}
+
+.table_get th {
+  /* text-align: left; */
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding-top:20px;
+}
+
+.table_get td {
+  text-align: center;
+}
+
+.table_get tbody:hover {
+  background-color: green;
+}

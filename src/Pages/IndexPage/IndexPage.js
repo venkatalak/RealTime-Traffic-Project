@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './IndexPage.css';
+
+
 /**
  * This is the helper function which is used to show Different functionalities of realtime traffic
  * @returns Functionalities
  */
+
+
 function IndexPage() {
   return (
     <div>
@@ -17,28 +21,37 @@ function IndexPage() {
           <div className="buttons">
             <table className="table_librarian">
               <tr>
-                <th>
-                  <button className="button_student"><Link to="/trafficspeeddetailspage">About Traffic Details</Link></button>
+              <th>
+                  <Link to="/getdata"><button className="custom-btn btn-12"><span>Table Data</span><span>Click!</span></button></Link>
                 </th>
                 <th>
-                  <button className="button_books">Check Traffic locations</button>
+                  <Link to="/trafficspeeddetailspage"><button className="custom-btn btn-12"><span>Search Data</span><span>Click!</span></button></Link>
+                </th>
+                <th>
+                  <Link to="/average"><button className="custom-btn btn-12"><span>Sorting Data</span><span>Click!</span></button></Link>
+                </th>
+                <th>
+                  <Link to="/traffic"><button className="custom-btn btn-12"><span>Filter Data</span><span>Click!</span></button></Link>
+                </th>
+                <th>
+                  <Link to="/range"><button className="custom-btn btn-12"><span>Range Data</span><span>Click!</span></button></Link>
                 </th>
 
               </tr>
-              <tr>
+              {/* <tr>
                 <td>
-                  {/* notification means feedback , requested books, complaints etc */}
-                  <button className="button_notification">Check Speed Details</button>
+                  <Link to="/trafficspeeddetailspage"><button className="button_notification">Filter Data</button></Link>
                 </td>
                 <td>
-                  <button className="button_logout">Check Distance Time</button>
+                  <Link to="/trafficspeeddetailspage"><button className="button_logout">Check Distance Time</button></Link>
                 </td>
-              </tr>
-
-
+              </tr> */}
+            
 
             </table>
-          </div></div>
+
+          </div>
+        </div>
       </>
     </div>
   )

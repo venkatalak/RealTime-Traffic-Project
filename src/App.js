@@ -1,11 +1,13 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import IndexPage from "./Pages/IndexPage/IndexPage";
 import TrafficSpeedDetailsPage from "./Pages/AboutTrafficDetails/TrafficSpeedDetailsPage";
-import AverageSpeedDetailsPage from "./Pages/AverageSpeedDetails/AverageSpeedDetailsPage";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SearchDataPage from "./Pages/SerachByElements/SearchDataPage";
+import FilterDataPage from "./Pages/Filter/FilterDataPage";
+import SortPage from "./Pages/Sorting/SortPage";
+import GetDataPage from './AnotherMethod/GetDataPage';
+import RangePage from './Pages/Range/RangePage';
 
 /**
- * This is helper function to display the all pages
+ * This is helper function to display all pages
  * @returns 
  */
 function App() {
@@ -13,10 +15,12 @@ function App() {
     <Router>
 
       <Routes>
-        <Route path="/" element={<IndexPage/>} />
-        <Route path="/trafficspeeddetailspage" element={<TrafficSpeedDetailsPage/>} />
-        <Route path="/searchdata" element={<SearchDataPage/>} />
-        <Route path="/" element={<AverageSpeedDetailsPage/>} />
+        <Route path="/" element={<IndexPage />} />
+        <Route path="/trafficspeeddetailspage" element={<TrafficSpeedDetailsPage />} />
+        <Route path="/traffic" element={<FilterDataPage />} />
+        <Route path="/average" element={<SortPage />} />
+        <Route path="/getdata" element={<GetDataPage/>}/>
+        <Route path="/range" element={<RangePage/>}/>
       </Routes>
     </Router>
     // <>
@@ -26,7 +30,7 @@ function App() {
     // <AverageSpeedDetailsPage/>
 
     // </>
-    
+
   );
 }
 
